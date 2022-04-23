@@ -4,19 +4,22 @@ const url = new URL(window.location.href);
 function updateText() {
     document.getElementById("text").innerHTML = inputText;
     document.getElementById("text").style.animationDuration = String((inputText.length) / 2) + 's';
-    url.searchParams.set("text", inputText);
+    console.log(btoa(inputText));
+    url.searchParams.set("text", btoa(inputText));
     window.history.replaceState(null, null, url);
 }
 
 function pageLoad() {
     urlLoad = url.searchParams.get("text");
+    console.log(urlLoad);
     
     if (urlLoad == null) {
-        url.searchParams.set("text", "Hello World!");
+        url.searchParams.set("text", btoa("Hello World!"));
         window.history.replaceState(null, null, url);
     }
 
-    inputText = url.searchParams.get("text");
+    inputText = atob(url.searchParams.get("text"));
+    console.log("Final is " + inputText);
     updateText();
 }
 

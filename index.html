@@ -12,11 +12,11 @@
     <link rel="manifest" href="/manifest.webmanifest">
     <title>Text Scroller</title>
 </head>
-<body>
+<body onload="pageLoad()">
     <div>
         <span id="text">Hello World!</span>
     </div>
 
-    <button id="button" onclick="updateText()">Change text</button>
+    <button id="button" onclick="buttonClick()">Change text</button>
 </body>
 </html>

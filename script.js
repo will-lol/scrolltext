@@ -13,6 +13,8 @@ function pageLoad() {
     
     if (urlLoad != "") {
         inputText = url.searchParams.get("text");
+    } else {
+        inputText = "Hello World!"
     }
 
     updateText();

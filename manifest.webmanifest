@@ -1,0 +1,18 @@
+{
+    "theme_color": "#fffff",
+    "background_color": "#ffffff",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "/",
+    "id": "/", 
+    "name": "Text Scroller",
+    "short_name": "Scroller",
+    "icons": [
+        {
+            "src": "assets/icons/icon-1080x1080.png",
+            "sizes": "1080x1080",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

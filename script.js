@@ -1,4 +1,4 @@
-inputText = "Hello World!"
+inputText = "";
 const url = new URL(window.location.href);
 
 function updateText() {
@@ -9,14 +9,14 @@ function updateText() {
 }
 
 function pageLoad() {
-    urlLoad = url.searchParams.get("text")
+    urlLoad = url.searchParams.get("text");
     
-    if (urlLoad != "") {
-        inputText = url.searchParams.get("text");
-    } else {
-        inputText = "Hello World!"
+    if (urlLoad == null) {
+        url.searchParams.set("text", "Hello World!");
+        window.history.replaceState(null, null, url);
     }
 
+    inputText = url.searchParams.get("text");
     updateText();
 }
 

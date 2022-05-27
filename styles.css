@@ -27,9 +27,6 @@ div {
 }
 
 button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
     cursor: pointer;
     outline: 0;
     opacity: 20%;
@@ -46,6 +43,14 @@ button {
     border-radius: .25rem;
     transition: all 0.15s;
     font-family: "Space Grotesk";
+    height: 50px;
+}
+
+.controller {
+    position: fixed;
+    display: flex;
+    top: 20px;
+    left: 20px;
 }
 
 button:hover {

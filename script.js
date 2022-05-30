@@ -1,11 +1,30 @@
 const url = new URL(window.location.href);
 
-let color = {id:"color", default:"#f80000", currentValue:""};
-let text = {id:"text", default:"Hello World!", currentValue:""};
+var color = {id:"color", default:"#f80000", currentValue:""};
+var text = {id:"text", default:"Hello World!", currentValue:"", time:5, screenDelay:0};
 
 function updateText(inputText) {
-    document.getElementById(text.id).innerHTML = inputText;
-    document.getElementById(text.id).style.animationDuration = String((inputText.length) / 2) + 's';
+    text.time = ((inputText.length) / 2);
+    console.log("text.time: " + text.time);
+    console.log("screenDelay: " + (text.screenDelay*1000))
+    timeout = (text.screenDelay*1000) + ((text.time - (Date.now()/1000)%text.time)*1000);
+    console.log("timeout: " + ((text.time - (Date.now()/1000)%text.time)*1000));
+    console.log("timeout with screen delay: " + timeout);
+    setTimeout(function(){ updateDOM(inputText, text.time); }, timeout);
+}
+
+function copyLink() {
+    text.screenDelay = ((document.documentElement.clientWidth / document.getElementById(text.id).clientWidth) * text.time);
+    url.searchParams.set("screenDelay", text.screenDelay);
+    navigator.clipboard.writeText(url.href);
+}
+
+function updateDOM(inputText, time) {
+    console.log("Updating dom");
+    element = document.getElementById(text.id);
+    element.innerHTML = inputText;
+    element.style.animationDuration = String(time) + 's';
+    element.style.animationPlayState = 'running';
     url.searchParams.set(text.id, btoa(inputText));
     window.history.replaceState(null, null, url);
 }
@@ -37,6 +56,10 @@ function changeColor() {
 }
 
 function pageLoad() {
+    screenDelay = url.searchParams.get("screenDelay")
+    if (screenDelay != null) {
+        text.screenDelay = screenDelay;
+    }
     urlCheck(color, text);
     updateText(atob(url.searchParams.get(text.id)));
     updateColor(atob(url.searchParams.get(color.id)));

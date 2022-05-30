@@ -68,4 +68,5 @@ span {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-duration: 5.5s;
+    animation-play-state: paused;
 }   

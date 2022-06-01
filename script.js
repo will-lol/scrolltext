@@ -14,7 +14,9 @@ function updateText(inputText) {
 }
 
 function copyLink() {
-    text.screenDelay = ((document.documentElement.clientWidth / document.getElementById(text.id).clientWidth) * text.time);
+    viewportWidth = document.documentElement.clientWidth;
+    textWidth = document.getElementById(text.id).clientWidth;
+    text.screenDelay = ((viewportWidth / (textWidth + viewportWidth)) * text.time);
     url.searchParams.set("screenDelay", text.screenDelay);
     navigator.clipboard.writeText(url.href);
     url.searchParams.delete("screenDelay");

@@ -29,7 +29,6 @@ div {
 button {
     cursor: pointer;
     outline: 0;
-    opacity: 20%;
     color: #ffffff;
     background-color: #292929;
     border-color: #000000;
@@ -41,8 +40,8 @@ button {
     padding: 6px 12px;
     font-size: 16px;
     border-radius: .25rem;
-    transition: all 0.15s;
     height: 50px;
+    margin: 5px;
 }
 
 .controller {
@@ -50,10 +49,21 @@ button {
     display: flex;
     top: 20px;
     left: 20px;
+    opacity: 30%;
+    height: fit-content;
+    width: fit-content;
+    transition: opacity 5000ms cubic-bezier(1.000, 0.000, 1.000, 0.05);
 }
 
-button:hover {
+.controller:hover {
+    transition: opacity 100ms;
     opacity: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .controller {
+        flex-direction: column;
+    }
 }
 
 span {

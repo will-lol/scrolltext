@@ -7,6 +7,7 @@
     "id": "/", 
     "name": "Text Scroller",
     "short_name": "Scroller",
+    "orientation": "any",
     "icons": [
         {
             "src": "assets/icons/icon-1080x1080.png",
